@@ -26,16 +26,16 @@ public class UsersController {
 	@Autowired
 	private UsersServiceImpl usersService;
 	
-	@GetMapping ("/isUser")
+	@PostMapping ("/isUser")
 	public int checkIsUser (@RequestBody @Valid User user) {
 		return usersService.checkIsUser(user);
 	}
 
-	@GetMapping
-	public User getUserByUsername(@RequestBody @Valid User user) {
-		
-		return usersService.getUserByUsername(user.getUserName());
-	}
+//	@GetMapping
+//	public User getUserByUsername(@RequestBody @Valid User user) {
+//		
+//		return usersService.getUserByUsername(user.getUserName());
+//	}
 	
 	@PostMapping
 	public void postUser(@RequestBody @Valid User user) {
