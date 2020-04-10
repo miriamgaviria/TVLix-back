@@ -33,7 +33,7 @@ public class OpinionsServiceImpl implements OpinionsService{
 
 		Date currentDate = new Date();
 		
-		String strDateFormat = "yyyy/MM/dd HH:mm";
+		String strDateFormat = "yyyy-MM-dd HH:mm";
 		
 		SimpleDateFormat opinionDate = new SimpleDateFormat(strDateFormat);
 		
@@ -58,14 +58,12 @@ public class OpinionsServiceImpl implements OpinionsService{
 		
 		try {
 			
-			opinionsRepository.deleteById(id);	
+			opinionsRepository.deleteById(id);				
 			
-			log.debug(" Couldn't deleteOpinion by id: " + id);	
 			
 		} catch (Exception e) {
-			// TODO: handle exception
-		}
-		
-	}
 
+			log.debug(" Couldn't deleteOpinion by id: " + id);	
+		}		
+	}
 }

@@ -43,9 +43,9 @@ public class Opinion implements Serializable{
 	
 	@Column
 	@NotNull
-	private int rate;
+	private String rate;
 	
-	@ManyToOne
-	@JoinColumn(name = "fk_users", nullable = false, updatable = false)
-	private User user;
+//	@ManyToOne
+//	@JoinColumn(name = "fk_users", nullable = false, updatable = false)
+//	private User user;
 }
