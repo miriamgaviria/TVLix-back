@@ -52,7 +52,7 @@ public class UsersServiceImpl {
 		return usersRepository.findByUserName(userName);
 	}
 
-	public void saveUser(User user) {
+	public boolean saveUser(User user) {
 		
 		User userRecovered = new User();
 		
@@ -62,9 +62,13 @@ public class UsersServiceImpl {
 
 			usersRepository.save(user);
 			
+			return true;
+			
 		} else {
 			
 			log.error ("Hay usuario");
+			
+			return false;
 		}
 		
 	}

@@ -8,6 +8,6 @@ public interface UsersService {
 	
 	public abstract User getUserByUsername(String userName);
 	
-	public abstract void saveUser(User user); 
+	public abstract boolean saveUser(User user); 
 
 }

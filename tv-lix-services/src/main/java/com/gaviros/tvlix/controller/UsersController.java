@@ -31,16 +31,15 @@ public class UsersController {
 		return usersService.checkIsUser(user);
 	}
 
-//	@GetMapping
-//	public User getUserByUsername(@RequestBody @Valid User user) {
-//		
-//		return usersService.getUserByUsername(user.getUserName());
-//	}
+	@GetMapping("/{userName}")
+	public User getUserByUsername(@PathVariable (required = true) @Valid String userName) {		
+		return usersService.getUserByUsername(userName);
+	}
 	
 	@PostMapping
-	public void postUser(@RequestBody @Valid User user) {
+	public boolean postUser(@RequestBody @Valid User user) {
 		
-		usersService.saveUser(user);
+		return usersService.saveUser(user);
 	}
 }
 
