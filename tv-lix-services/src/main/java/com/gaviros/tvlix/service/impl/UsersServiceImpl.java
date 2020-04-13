@@ -7,17 +7,18 @@ import org.springframework.stereotype.Service;
 
 import com.gaviros.tvlix.entity.User;
 import com.gaviros.tvlix.repository.UsersRepository;
+import com.gaviros.tvlix.service.UsersService;
 
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Service
-public class UsersServiceImpl {
+public class UsersServiceImpl implements UsersService{
 	
 	@Autowired
 	UsersRepository usersRepository;	
 	
-
+	@Override
 	public int checkIsUser(@Valid User user) {
 		
 		User userRecovered = new User();
@@ -47,11 +48,14 @@ public class UsersServiceImpl {
 		}
 	}
 
+	@Override
 	public User getUserByUsername(String userName) {
+		
 		 
 		return usersRepository.findByUserName(userName);
 	}
 
+	@Override
 	public boolean saveUser(User user) {
 		
 		User userRecovered = new User();
@@ -73,5 +77,27 @@ public class UsersServiceImpl {
 		
 	}
 
+	@Override
+	public boolean updateUser(User user) {
+
+		User userRecovered = new User();
+		
+		userRecovered = usersRepository.findByUserName(user.getUserName());
+	
+		if(userRecovered.equals(user)) {
+
+			log.error ("No ha habido cambios");		
+			
+			return false;
+			
+		} else {
+			
+			usersRepository.delete(userRecovered);
+			
+			usersRepository.save(user);
+			
+			return true;
+		}
+	}
 
 }
