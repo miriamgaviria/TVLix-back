@@ -35,32 +35,35 @@ public class User_TvShow implements Serializable{
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
 	
-	@Column
-	private String assessment;
-	
-	@Column
-	private String episode;
-	
-	@Column
-	private String reason;
-	
-	@Column
-	private String season;
-	
-	@Column
-	@NotNull
-	private String status;
-	
 	//@ManyToMany
     @NotNull
 	@JoinColumn(name = "fk_users", nullable = false, updatable = false)
 	private User user;
-	
+    
 	//@ManyToMany
     @NotNull
 	@JoinColumn(name = "fk_tvshows", nullable = false, updatable = false)
 	private TvShow tvShow;
 	
+	@Column
+	@NotNull
+	private String watchedStatus;
 	
+	@Column
+	private String rate;
+	
+	@Column
+	private String opinion;
+		
+	@Column
+	private String seasonWatched;
+	
+	@Column
+	private String episodeWatched;
+	
+	@Column
+	private String reason;
 
+	@Column
+	private String platform;
 }

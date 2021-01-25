@@ -32,30 +32,27 @@ public class TvShow implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;	
 	
-    @Column
-	private String actors;    
-	
 	@Column
-	private String director;
-	
+	private String name;
+
 	@Column
+	private String runTime;
+	
+	@Column	
 	private String genre;
     	
 	@Column
-	private String permalink;
-	
-	@Column
-	private String picture_url;
-	
-	@Column
-	private String plot;
-	
-	@Column
 	private String seasons;
+		
+	@Column
+	private String rating;
 	
 	@Column
-	private String status;	
+	private String status;
 	
 	@Column
-	private String title;
+	private String sinopsis;
+	
+	@Column
+	private String image_url;	
 }
