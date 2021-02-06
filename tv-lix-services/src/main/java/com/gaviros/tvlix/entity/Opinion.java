@@ -39,13 +39,10 @@ public class Opinion implements Serializable{
 	private String comment;	
 	
 	@Column
-	private String email; 
-	
-	@Column
 	@NotNull
 	private String rate;
 	
-//	@ManyToOne
-//	@JoinColumn(name = "fk_users", nullable = false, updatable = false)
-//	private User user;
+	@ManyToOne
+	@JoinColumn(name = "FK_USER", nullable = false, updatable = false)
+	private User user;	
 }

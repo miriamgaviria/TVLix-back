@@ -1,12 +1,14 @@
 package com.gaviros.tvlix.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -29,7 +31,8 @@ public class TvShow implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column
+//	@OneToMany
 	private long id;	
 	
 	@Column
@@ -43,9 +46,15 @@ public class TvShow implements Serializable {
     	
 	@Column
 	private String seasons;
+	
+	@Column
+	private String episodes;
 		
 	@Column
 	private String rating;
+	
+	@Column
+	private String rating_count;
 	
 	@Column
 	private String status;
@@ -54,5 +63,11 @@ public class TvShow implements Serializable {
 	private String sinopsis;
 	
 	@Column
-	private String image_url;	
+	private String image;	
+	
+	@Column
+	private String start_date;	
+	
+	@Column
+	private String end_date;
 }

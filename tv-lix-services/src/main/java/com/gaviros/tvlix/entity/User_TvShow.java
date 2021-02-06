@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -35,16 +36,15 @@ public class User_TvShow implements Serializable{
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
 	
-	//@ManyToMany
-    @NotNull
-	@JoinColumn(name = "fk_users", nullable = false, updatable = false)
-	private User user;
+	@ManyToOne
+	@JoinColumn(name = "FK_USER", nullable = false, updatable = false)
+	private User user;	
     
-	//@ManyToMany
+	@ManyToOne
     @NotNull
-	@JoinColumn(name = "fk_tvshows", nullable = false, updatable = false)
+	@JoinColumn(name = "FK_TVSHOW", nullable = false, updatable = false)
 	private TvShow tvShow;
-	
+		
 	@Column
 	@NotNull
 	private String watchedStatus;
