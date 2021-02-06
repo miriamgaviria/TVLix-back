@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.gaviros.tvlix.entity.Opinion;
+import com.gaviros.tvlix.entity.User;
 import com.gaviros.tvlix.repository.OpinionsRepository;
+import com.gaviros.tvlix.repository.UsersRepository;
 import com.gaviros.tvlix.service.OpinionsService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -19,6 +21,9 @@ public class OpinionsServiceImpl implements OpinionsService{
 	
 	@Autowired
 	OpinionsRepository opinionsRepository;	
+	
+	@Autowired
+	UsersRepository usersRepository;
 	
 
 	@Override
@@ -39,7 +44,13 @@ public class OpinionsServiceImpl implements OpinionsService{
 		
 		String opinionDateAsString = opinionDate.format(currentDate);
 		
-		opinion.setDate(opinionDateAsString);
+		opinion.setDate(opinionDateAsString);	
+		
+		User userById = usersRepository.findById(opinion.getUser().getId());
+		
+		opinion.setUser(userById);
+		
+		opinion.setUser(usersRepository.findById(opinion.getUser().getId()) );
 		
 		try {
 			
