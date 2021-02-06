@@ -16,6 +16,7 @@ import com.gaviros.tvlix.entity.User;
 import com.gaviros.tvlix.service.impl.UsersServiceImpl;
 
 @CrossOrigin(origins = "*", allowedHeaders="*")
+//@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping ("/users")
 public class UsersController {
@@ -28,9 +29,14 @@ public class UsersController {
 		return usersService.checkIsUser(user);
 	}
 
-	@GetMapping("/{userName}")
-	public User getUserByUsername(@PathVariable (required = true) @Valid String userName) {		
+	@GetMapping("/userName/{userName}")
+	public User getUserByUsername(@PathVariable (required = true) @Valid String userName) {	
 		return usersService.getUserByUsername(userName);
+	}
+	
+	@GetMapping("/{id}")
+	public User getUserById(@PathVariable (required = true) @Valid long id) {		
+		return usersService.getUserById(id);
 	}
 	
 	@PostMapping

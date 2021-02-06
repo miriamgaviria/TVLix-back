@@ -8,6 +8,8 @@ public interface UsersService {
 	
 	public abstract User getUserByUsername(String userName);
 	
+	public abstract User getUserById(long id);
+	
 	public abstract boolean saveUser(User user); 
 	
 	public abstract boolean updateUser(User user); 

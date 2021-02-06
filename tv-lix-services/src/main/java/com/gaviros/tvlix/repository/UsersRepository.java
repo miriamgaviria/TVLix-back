@@ -7,4 +7,6 @@ import com.gaviros.tvlix.entity.User;
 public interface UsersRepository extends CrudRepository<User, Long>{
 
 	public abstract User findByUserName(String userName);
+	
+	public abstract User findById(long id);
 }

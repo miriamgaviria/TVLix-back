@@ -1,5 +1,7 @@
 package com.gaviros.tvlix.service.impl;
 
+import java.util.Optional;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,8 +52,7 @@ public class UsersServiceImpl implements UsersService{
 
 	@Override
 	public User getUserByUsername(String userName) {
-		
-		 
+				 
 		return usersRepository.findByUserName(userName);
 	}
 
@@ -79,10 +80,12 @@ public class UsersServiceImpl implements UsersService{
 
 	@Override
 	public boolean updateUser(User user) {
-
-		User userRecovered = new User();
 		
-		userRecovered = usersRepository.findByUserName(user.getUserName());
+		User userRecovered = getUserById(4);
+		
+		long userId = (long) user.getId();
+		
+		userRecovered = usersRepository.findById(userId);
 	
 		if(userRecovered.equals(user)) {
 
@@ -98,6 +101,12 @@ public class UsersServiceImpl implements UsersService{
 			
 			return true;
 		}
+	}
+
+	@Override
+	public User getUserById(long id) {
+				 
+		return usersRepository.findById(id);
 	}
 
 }
