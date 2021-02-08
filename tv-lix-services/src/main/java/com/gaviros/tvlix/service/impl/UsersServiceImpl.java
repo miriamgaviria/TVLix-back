@@ -109,4 +109,18 @@ public class UsersServiceImpl implements UsersService{
 		return usersRepository.findById(id);
 	}
 
+	@Override
+	public boolean deleteUserById(long id) {
+		
+		try {
+			
+			usersRepository.deleteById(id);
+			return true;
+			
+		} catch (Exception e) {
+			
+			System.out.print(e.getMessage());
+			return false;
+		}
+	}
 }

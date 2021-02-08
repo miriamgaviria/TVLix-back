@@ -13,5 +13,7 @@ public interface UsersService {
 	public abstract boolean saveUser(User user); 
 	
 	public abstract boolean updateUser(User user); 
+	
+	public abstract boolean deleteUserById(long id);
 
 }
