@@ -46,12 +46,6 @@ public class OpinionsServiceImpl implements OpinionsService{
 		
 		opinion.setDate(opinionDateAsString);	
 		
-		User userById = usersRepository.findById(opinion.getUser().getId());
-		
-		opinion.setUser(userById);
-		
-		opinion.setUser(usersRepository.findById(opinion.getUser().getId()) );
-		
 		try {
 			
 			opinionsRepository.save(opinion);
