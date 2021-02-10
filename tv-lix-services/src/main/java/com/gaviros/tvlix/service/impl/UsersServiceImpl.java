@@ -95,8 +95,6 @@ public class UsersServiceImpl implements UsersService{
 			
 		} else {
 			
-			usersRepository.delete(userRecovered);
-			
 			usersRepository.save(user);
 			
 			return true;
