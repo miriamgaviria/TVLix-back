@@ -20,12 +20,12 @@ import lombok.Data;
 import lombok.ToString;
 
 @Entity
-@Table (name = "userTvShow")
+@Table (name = "userTvShows")
 @Data
 @ToString(includeFieldNames = true)
 @JsonInclude(Include.NON_NULL)
 
-public class User_TvShow implements Serializable{
+public class UserTvShow implements Serializable{
 	
 	/**
 	 * 
@@ -47,7 +47,7 @@ public class User_TvShow implements Serializable{
 		
 	@Column
 	@NotNull
-	private String watchedStatus;
+	private int watchedStatus;
 	
 	@Column
 	private String rate;
