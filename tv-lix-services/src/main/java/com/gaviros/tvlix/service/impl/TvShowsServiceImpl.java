@@ -37,8 +37,11 @@ public class TvShowsServiceImpl implements TvShowsService {
 	}
 	
 	public boolean saveTvShow(@Valid TvShow tvShow) {
+
+		System.out.print(tvShowsRepository.findById(tvShow.getId()) == null);
+		System.out.print(tvShow != null);
 		
-		if (tvShow != null) {
+		if (tvShowsRepository.findById(tvShow.getId()) == null) {
 			
 			tvShowsRepository.save(tvShow);
 			
