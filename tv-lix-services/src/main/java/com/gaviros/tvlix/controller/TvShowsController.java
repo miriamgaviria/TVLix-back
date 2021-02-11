@@ -13,9 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.gaviros.tvlix.entity.TvShow;
-import com.gaviros.tvlix.entity.User;
 import com.gaviros.tvlix.service.TvShowsService;
-import com.gaviros.tvlix.service.impl.TvShowsServiceImpl;
 
 import java.util.List;
 
@@ -27,7 +25,7 @@ import javax.validation.Valid;
 public class TvShowsController {
 	
 	@Autowired
-	private TvShowsServiceImpl tvShowsService;
+	private TvShowsService tvShowsService;
 	
 	@GetMapping
 	public List <TvShow> getTvShows() {

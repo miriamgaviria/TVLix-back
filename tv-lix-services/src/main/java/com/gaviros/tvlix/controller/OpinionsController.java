@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.gaviros.tvlix.entity.Opinion;
-import com.gaviros.tvlix.service.impl.OpinionsServiceImpl;
+import com.gaviros.tvlix.service.OpinionsService;
 
 @CrossOrigin(origins= {"http://localhost:4200"})
 @RestController
@@ -23,7 +23,7 @@ import com.gaviros.tvlix.service.impl.OpinionsServiceImpl;
 public class OpinionsController {
 	
 	@Autowired
-	private OpinionsServiceImpl opinionsService;
+	private OpinionsService opinionsService;
 	
 	@GetMapping
 	public List <Opinion> getAllOpinions() {

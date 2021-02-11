@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.gaviros.tvlix.entity.User;
-import com.gaviros.tvlix.service.impl.UsersServiceImpl;
+import com.gaviros.tvlix.service.UsersService;
 
 @CrossOrigin(origins = "*", allowedHeaders="*")
 //@CrossOrigin(origins = "http://localhost:4200")
@@ -23,7 +23,7 @@ import com.gaviros.tvlix.service.impl.UsersServiceImpl;
 public class UsersController {
 	
 	@Autowired
-	private UsersServiceImpl usersService;
+	private UsersService usersService;
 	
 	@PostMapping ("/isUser")
 	public int checkIsUser (@RequestBody @Valid User user) {
