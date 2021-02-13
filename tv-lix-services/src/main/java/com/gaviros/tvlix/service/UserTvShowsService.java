@@ -11,7 +11,7 @@ public interface UserTvShowsService {
 	
 	public abstract List <UserTvShow> getAllUserTvShows();
 
-	public abstract List<UserTvShow> getUserTvShowsByStatus(@Valid int watchedStatus);
+	public abstract List<UserTvShow> getUserTvShowsByStatus(@Valid long userId, @Valid int watchedStatus);
 
 	public abstract boolean saveTvShow(@Valid UserTvShow userTvShow);
 

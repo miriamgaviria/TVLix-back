@@ -34,10 +34,11 @@ public class UserTvShowsController {
 		
 	}
 	
-	@GetMapping("/{watchedStatus}")
-	public List <UserTvShow> getUserTvShowsByStatus(@PathVariable (required = true) @Valid int watchedStatus) {
+	@GetMapping("/{userId}/{watchedStatus}")
+	public List <UserTvShow> getUserTvShowsByStatus(@PathVariable (required = true) @Valid long userId, @PathVariable (required = true) @Valid int watchedStatus) {
 		
-		return userTvShowsService.getUserTvShowsByStatus(watchedStatus);
+		return userTvShowsService.getUserTvShowsByStatus(userId, watchedStatus);
+		
 	}
 	
 	@PostMapping
