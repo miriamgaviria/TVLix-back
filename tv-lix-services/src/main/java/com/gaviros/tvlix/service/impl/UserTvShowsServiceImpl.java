@@ -70,7 +70,7 @@ public class UserTvShowsServiceImpl implements UserTvShowsService{
 	}
 
 	@Override
-	public List<UserTvShow> getUserTvShowsByStatus(@Valid long userId, @Valid int watchedStatus) {
+	public List<UserTvShow> getUserTvShowsByStatus(@Valid long userId, @Valid String watchedStatus) {
 		
 		try {
 			
@@ -78,20 +78,17 @@ public class UserTvShowsServiceImpl implements UserTvShowsService{
 			
 			List<UserTvShow> userTvShows = userTvShowRepository.findByUser(user);
 			
-			List<UserTvShow> userTvShowsByStatus = userTvShows.stream().filter(tvShow -> tvShow.watchedStatus == watchedStatus).collect(Collectors.toList());
-			
-			System.out.print(userTvShowsByStatus);
+			List<UserTvShow> userTvShowsByStatus = userTvShows.stream().filter(tvShow -> tvShow.watchedStatus.equals(watchedStatus)).collect(Collectors.toList());
 			
 			return userTvShowsByStatus; 
 			
 		} catch (Exception e) {
+			
 			List<UserTvShow> emptyList = null;
+			
 			System.out.print(e.getMessage());
 			
 			return emptyList;
-		}
-		
-		
+		}		
 	}
-
 }

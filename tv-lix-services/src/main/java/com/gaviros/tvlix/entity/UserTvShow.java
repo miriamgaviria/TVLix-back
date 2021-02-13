@@ -47,7 +47,7 @@ public class UserTvShow implements Serializable{
 		
 	@Column
 	@NotNull
-	public int watchedStatus;
+	public String watchedStatus;
 	
 	@Column
 	private String rate;
