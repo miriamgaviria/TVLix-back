@@ -51,7 +51,7 @@ public class TvShowsController {
 	}
 	
 	@DeleteMapping("/{id}")
-	public boolean DeleteTvShowById(@PathVariable (required = true) @Valid long id) {		
+	public boolean deleteTvShowById(@PathVariable (required = true) @Valid long id) {		
 		return tvShowsService.deleteTvShowById(id);
 	}
 }
