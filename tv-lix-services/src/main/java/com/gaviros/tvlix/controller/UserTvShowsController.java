@@ -53,7 +53,8 @@ public class UserTvShowsController {
 	@PostMapping
 	public boolean postUserTvShow(@RequestBody @Valid UserTvShow userTvShow) {
 		
-		return userTvShowsService.saveTvShow(userTvShow);
+		return userTvShowsService.saveUserTvShow(userTvShow);
+	}
 	
 	@PutMapping
 	public boolean putUserTvShow(@RequestBody @Valid UserTvShow userTvShow) {
