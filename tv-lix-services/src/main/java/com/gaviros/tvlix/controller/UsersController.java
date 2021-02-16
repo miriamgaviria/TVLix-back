@@ -53,7 +53,7 @@ public class UsersController {
 	}
 	
 	@DeleteMapping("/{id}")
-	public boolean DeleteUserById(@PathVariable (required = true) @Valid long id) {		
+	public boolean deleteUserById(@PathVariable (required = true) @Valid long id) {		
 		return usersService.deleteUserById(id);
 	}
 	
