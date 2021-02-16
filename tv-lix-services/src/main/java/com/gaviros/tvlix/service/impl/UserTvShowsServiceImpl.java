@@ -84,57 +84,35 @@ public class UserTvShowsServiceImpl implements UserTvShowsService{
 	}
 
 	@Override
-	public boolean saveTvShow(@Valid UserTvShow userTvShow) {
+	public boolean saveUserTvShow(@Valid UserTvShow userTvShow) {
 
 		TvShow tvShowRecovered = tvShowsRepository.findById(userTvShow.getTvShow().getId());
 		
 		if (tvShowRecovered == null) {
 			
 			tvShowsRepository.save(userTvShow.getTvShow());
-			userTvShowRepository.save(userTvShow);
-			
+			userTvShowRepository.save(userTvShow);		
 			
 			System.out.println("guardada en tvShow y userTvShow " );
 			return true;
 			
 		} else {
 			
-			List <UserTvShow> userTvShowListRecovered = userTvShowRepository.findByUser(userTvShow.getUser());
-			
-			UserTvShow userTvShowRecovered = getUserTvShowByTvShowId(userTvShowListRecovered, userTvShow.getTvShow().getId());
-			
-			System.out.println ("userTvShowRecovered" + userTvShowRecovered);
+			UserTvShow userTvShowRecovered = getUserTvShowByTvShowId(userTvShow);
 			
 			if (userTvShowRecovered == null) {
 				
 				userTvShowRepository.save(userTvShow);
 				
-				System.out.println("guardada nueva en userTvShow " );
-				
+				System.out.println("guardada nueva en userTvShow " );			
 				
 				return true;	
+			
+			} else {				
 				
-			} else {
+				return false;			
 				
-				System.out.println("userTvShow.getTvShow().getEpisodes() " + userTvShow.getTvShow().getEpisodes());
-				System.out.println("tvShowRecovered.getEpisodes() " + userTvShowRecovered.getTvShow().getEpisodes());
-				if (userTvShow.getTvShow().getEpisodes().equals(userTvShowRecovered.getTvShow().getEpisodes()) && userTvShow.getTvShow().getStatus().equals(userTvShowRecovered.getTvShow().getStatus())) {
-					
-					System.out.println("no guardada " );
-					
-					return false;	
-					
-				}	else {
-					
-					userTvShowRepository.delete(userTvShow);
-					
-					System.out.println("actualizar " );
-					
-					userTvShowRepository.save(userTvShow);
-					
-					return true;
-				}
-			}	
+			}			
 		}
 	}
 
@@ -159,9 +137,14 @@ public class UserTvShowsServiceImpl implements UserTvShowsService{
 			return true;
 		}
 	}	
+
+	private UserTvShow getUserTvShowByTvShowId(UserTvShow userTvShow) {
+		
+		List <UserTvShow> userTvShowListRecovered = userTvShowRepository.findByUser(userTvShow.getUser());
+		
 		UserTvShow userTvShowById = null;
 		for (UserTvShow userTvShowRecovered : userTvShowListRecovered) {
-			if (userTvShowRecovered.getTvShow().getId() == tvShowId) {
+			if (userTvShowRecovered.getTvShow().getId() == userTvShow.getTvShow().getId()) {
 				userTvShowById = userTvShowRecovered;
 			}			
 		}

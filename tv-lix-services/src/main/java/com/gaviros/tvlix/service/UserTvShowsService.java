@@ -13,12 +13,13 @@ public interface UserTvShowsService {
 
 	public abstract List<UserTvShow> getUserTvShowsByStatus(@Valid long userId, @Valid String watchedStatus);
 
-	public abstract boolean saveTvShow(@Valid UserTvShow userTvShow);
-
 	public abstract List<UserTvShow> getUserTvShows(@Valid long userId);
+
+	public abstract boolean saveUserTvShow(@Valid UserTvShow userTvShow);
 
 	public abstract boolean updateUserTvShow(@Valid UserTvShow userTvShow);
 
 	public abstract boolean deleteTvShowUserById(@Valid long id);
+
 
 }
