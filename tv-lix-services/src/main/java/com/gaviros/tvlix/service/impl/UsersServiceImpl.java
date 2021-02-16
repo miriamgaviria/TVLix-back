@@ -51,6 +51,12 @@ public class UsersServiceImpl implements UsersService{
 	}
 
 	@Override
+	public User getUserById(long id) {
+				 
+		return usersRepository.findById(id);
+	}
+	
+	@Override
 	public User getUserByUsername(String userName) {
 				 
 		return usersRepository.findByUserName(userName);
@@ -74,18 +80,13 @@ public class UsersServiceImpl implements UsersService{
 			log.error ("Hay usuario");
 			
 			return false;
-		}
-		
+		}		
 	}
 
 	@Override
 	public boolean updateUser(User user) {
-		
-		User userRecovered = getUserById(4);
-		
-		long userId = (long) user.getId();
-		
-		userRecovered = usersRepository.findById(userId);
+
+		User userRecovered = usersRepository.findById(user.getId());
 	
 		if(userRecovered.equals(user)) {
 
@@ -101,11 +102,7 @@ public class UsersServiceImpl implements UsersService{
 		}
 	}
 
-	@Override
-	public User getUserById(long id) {
-				 
-		return usersRepository.findById(id);
-	}
+
 
 	@Override
 	public boolean deleteUserById(long id) {
