@@ -9,7 +9,7 @@ import com.gaviros.tvlix.entity.UserTvShow;
 
 public interface UserTvShowsService {
 	
-	public abstract List <UserTvShow> getAllUserTvShows();
+	public abstract List<UserTvShow> getAllUserTvShows();
 
 	public abstract List<UserTvShow> getUserTvShowsByStatus(@Valid long userId, @Valid String watchedStatus);
 

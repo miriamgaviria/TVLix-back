@@ -1,7 +1,5 @@
 package com.gaviros.tvlix.service.impl;
 
-import java.util.Optional;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -101,8 +99,6 @@ public class UsersServiceImpl implements UsersService{
 			return true;
 		}
 	}
-
-
 
 	@Override
 	public boolean deleteUserById(long id) {

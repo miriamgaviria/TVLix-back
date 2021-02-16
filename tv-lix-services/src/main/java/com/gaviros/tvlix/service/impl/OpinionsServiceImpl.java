@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.gaviros.tvlix.entity.Opinion;
-import com.gaviros.tvlix.entity.User;
 import com.gaviros.tvlix.repository.OpinionsRepository;
 import com.gaviros.tvlix.repository.UsersRepository;
 import com.gaviros.tvlix.service.OpinionsService;

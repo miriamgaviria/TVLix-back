@@ -10,11 +10,11 @@ public interface TvShowsService {
 	
 	public abstract List <TvShow> getAllTvShows();
 	
+	public abstract TvShow getTvShowById(long id);
+
 	public abstract boolean saveTvShow(TvShow tvShow);
 	
 	public abstract boolean updateTvShow(TvShow tvShow);
-
-	public abstract TvShow getTvShowById(long id);
 	
 	public abstract boolean deleteTvShowById(long id);
 

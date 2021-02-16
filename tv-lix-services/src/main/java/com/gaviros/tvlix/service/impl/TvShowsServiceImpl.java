@@ -1,8 +1,6 @@
 package com.gaviros.tvlix.service.impl;
 
 import java.util.List;
-import java.util.Optional;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,9 +10,6 @@ import com.gaviros.tvlix.entity.TvShow;
 import com.gaviros.tvlix.service.TvShowsService;
 import com.gaviros.tvlix.repository.TvShowsRepository;
 
-import lombok.extern.slf4j.Slf4j;
-
-@Slf4j
 @Service
 public class TvShowsServiceImpl implements TvShowsService {
 
@@ -66,7 +61,6 @@ public class TvShowsServiceImpl implements TvShowsService {
 			
 			return true;			
 		}
-
 	}
 
 	@Override

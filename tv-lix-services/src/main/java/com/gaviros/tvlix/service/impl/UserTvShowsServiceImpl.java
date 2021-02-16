@@ -1,6 +1,5 @@
 package com.gaviros.tvlix.service.impl;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -15,7 +14,6 @@ import com.gaviros.tvlix.entity.UserTvShow;
 import com.gaviros.tvlix.repository.TvShowsRepository;
 import com.gaviros.tvlix.repository.UserTvShowRepository;
 import com.gaviros.tvlix.repository.UsersRepository;
-import com.gaviros.tvlix.service.TvShowsService;
 import com.gaviros.tvlix.service.UserTvShowsService;
 
 @Service
@@ -30,9 +28,6 @@ public class UserTvShowsServiceImpl implements UserTvShowsService{
 	@Autowired
 	UsersRepository usersRepository;
 	
-	@Autowired
-	private TvShowsService tvShowsService;
-
 	@Override
 	public List<UserTvShow> getAllUserTvShows() {
 
@@ -121,7 +116,6 @@ public class UserTvShowsServiceImpl implements UserTvShowsService{
 
 		UserTvShow userTvShowRecovered = getUserTvShowByTvShowId(userTvShow);
 		
-		//if (userTvShow.getTvShow().getEpisodes().equals(userTvShowRecovered.getTvShow().getEpisodes()) && userTvShow.getTvShow().getStatus().equals(userTvShowRecovered.getTvShow().getStatus())) {
 		if (userTvShow.equals(userTvShowRecovered)) {
 				
 			System.out.println("no guardada " );
