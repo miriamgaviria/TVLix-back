@@ -17,5 +17,6 @@ public interface UserTvShowsService {
 
 	public abstract List<UserTvShow> getUserTvShows(@Valid long userId);
 
+	public abstract boolean updateUserTvShow(@Valid UserTvShow userTvShow);
 
 }

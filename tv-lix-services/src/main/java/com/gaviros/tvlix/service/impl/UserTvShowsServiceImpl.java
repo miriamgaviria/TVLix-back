@@ -138,7 +138,27 @@ public class UserTvShowsServiceImpl implements UserTvShowsService{
 		}
 	}
 
-	private UserTvShow getUserTvShowByTvShowId(List<UserTvShow> userTvShowListRecovered, long tvShowId) {
+	@Override
+	public boolean updateUserTvShow(@Valid UserTvShow userTvShow) {
+
+		UserTvShow userTvShowRecovered = getUserTvShowByTvShowId(userTvShow);
+		
+		//if (userTvShow.getTvShow().getEpisodes().equals(userTvShowRecovered.getTvShow().getEpisodes()) && userTvShow.getTvShow().getStatus().equals(userTvShowRecovered.getTvShow().getStatus())) {
+		if (userTvShow.equals(userTvShowRecovered)) {
+				
+			System.out.println("no guardada " );
+			
+			return false;	
+				
+		}	else {
+				
+			userTvShowRepository.save(userTvShow);
+			
+			System.out.println("actualizar " );
+			
+			return true;
+		}
+	}	
 		UserTvShow userTvShowById = null;
 		for (UserTvShow userTvShowRecovered : userTvShowListRecovered) {
 			if (userTvShowRecovered.getTvShow().getId() == tvShowId) {
