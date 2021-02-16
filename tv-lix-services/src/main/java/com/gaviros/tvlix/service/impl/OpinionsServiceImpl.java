@@ -3,6 +3,9 @@ package com.gaviros.tvlix.service.impl;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
+
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -54,6 +57,25 @@ public class OpinionsServiceImpl implements OpinionsService{
 
 			log.error("Couldn't post the opinion " + e.getMessage());
 			
+		}
+		
+	}
+	
+	// Method to probe
+	@Override
+	public void updateOpinion(@Valid Opinion opinion) {
+
+		Optional<Opinion> opinionRecovered = opinionsRepository.findById(opinion.getId());
+		
+		if(opinionRecovered.equals(opinion)) {
+
+			log.error ("No ha habido cambios");		
+			
+		} else {
+			
+			opinionsRepository.save(opinion);
+			
+			log.error ("Opinión cambiada");		
 		}
 		
 	}

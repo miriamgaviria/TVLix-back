@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -35,6 +36,13 @@ public class OpinionsController {
 	public void postOpinion (@RequestBody @Valid Opinion opinion) {
 		
 		opinionsService.saveOpinion(opinion);
+	}
+	
+	// Method to probe
+	@PutMapping
+	public void putOpinion (@RequestBody @Valid Opinion opinion) {
+		
+		opinionsService.updateOpinion(opinion);
 	}
 	
 	@DeleteMapping("/{id}")
