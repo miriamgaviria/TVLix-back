@@ -19,4 +19,6 @@ public interface UserTvShowsService {
 
 	public abstract boolean updateUserTvShow(@Valid UserTvShow userTvShow);
 
+	public abstract boolean deleteTvShowUserById(@Valid long id);
+
 }

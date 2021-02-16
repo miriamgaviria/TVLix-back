@@ -167,4 +167,18 @@ public class UserTvShowsServiceImpl implements UserTvShowsService{
 		}
 		return userTvShowById;
 	}
+
+	@Override
+	public boolean deleteTvShowUserById(@Valid long id) {
+		try {
+			
+			userTvShowRepository.deleteById(id);
+			return true;
+			
+		} catch (Exception e) {
+			
+			System.out.print(e.getMessage());
+			return false;
+		}
+	}
 }
