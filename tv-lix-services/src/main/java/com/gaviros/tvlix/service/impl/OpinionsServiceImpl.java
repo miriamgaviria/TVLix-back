@@ -37,7 +37,7 @@ public class OpinionsServiceImpl implements OpinionsService{
 			
 		} catch (Exception e) {
 			
-			log.error("Couldn't get the o: ", e.getMessage());
+			log.error("Couldn't get the oopinions: ", e.getMessage());
 			
 			return null;
 		}		
