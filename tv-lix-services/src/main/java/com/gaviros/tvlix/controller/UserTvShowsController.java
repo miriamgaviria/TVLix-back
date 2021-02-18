@@ -51,19 +51,19 @@ public class UserTvShowsController {
 	}
 	
 	@PostMapping
-	public boolean postUserTvShow(@RequestBody @Valid UserTvShow userTvShow) {
+	public void postUserTvShow(@RequestBody @Valid UserTvShow userTvShow) {
 		
-		return userTvShowsService.saveUserTvShow(userTvShow);
+		userTvShowsService.saveUserTvShow(userTvShow);
 	}
 	
 	@PutMapping
-	public boolean putUserTvShow(@RequestBody @Valid UserTvShow userTvShow) {
+	public void putUserTvShow(@RequestBody @Valid UserTvShow userTvShow) {
 		
-		return userTvShowsService.updateUserTvShow(userTvShow);
+		userTvShowsService.updateUserTvShow(userTvShow);
 	}
 	
 	@DeleteMapping("/{id}")
-	public boolean deleteUserTvShowById(@PathVariable (required = true) @Valid long id) {		
-		return userTvShowsService.deleteTvShowUserById(id);
+	public void deleteUserTvShowById(@PathVariable (required = true) @Valid long id) {		
+		userTvShowsService.deleteTvShowUserById(id);
 	}
 }

@@ -16,6 +16,9 @@ import com.gaviros.tvlix.repository.UserTvShowRepository;
 import com.gaviros.tvlix.repository.UsersRepository;
 import com.gaviros.tvlix.service.UserTvShowsService;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Service
 public class UserTvShowsServiceImpl implements UserTvShowsService{
 	
@@ -30,10 +33,17 @@ public class UserTvShowsServiceImpl implements UserTvShowsService{
 	
 	@Override
 	public List<UserTvShow> getAllUserTvShows() {
+		
+		try {			
+			
+			return (List<UserTvShow>) userTvShowRepository.findAll();
+			
+		} catch (Exception e) {
 
-		List<UserTvShow> allUserTvShows = (List<UserTvShow>) userTvShowRepository.findAll();
-
-		return allUserTvShows;
+			log.error("Couldn't get all userTvShows " + e.getMessage());	
+			
+			return null;
+		}
 	}
 	
 	@Override
@@ -48,12 +58,10 @@ public class UserTvShowsServiceImpl implements UserTvShowsService{
 			return userTvShows; 
 			
 		} catch (Exception e) {
+			 
+			log.error("Couldn't get  the user userTvShows " + e.getMessage());	
 			
-			List<UserTvShow> emptyList = null;
-			
-			System.out.print(e.getMessage());
-			
-			return emptyList;
+			return null;
 		}		
 	}
 
@@ -70,92 +78,107 @@ public class UserTvShowsServiceImpl implements UserTvShowsService{
 			
 		} catch (Exception e) {
 			
-			List<UserTvShow> emptyList = null;
+			log.error("Couldn't get the user userTvShows by watchedStatus " + e.getMessage());	
 			
-			System.out.print(e.getMessage());
-			
-			return emptyList;
+			return null;
 		}		
 	}
 
 	@Override
-	public boolean saveUserTvShow(@Valid UserTvShow userTvShow) {
-
-		TvShow tvShowRecovered = tvShowsRepository.findById(userTvShow.getTvShow().getId());
+	public void saveUserTvShow(@Valid UserTvShow userTvShow) {
 		
-		if (tvShowRecovered == null) {
+		try {
 			
-			tvShowsRepository.save(userTvShow.getTvShow());
-			userTvShowRepository.save(userTvShow);		
+			TvShow tvShowRecovered = tvShowsRepository.findById(userTvShow.getTvShow().getId());
 			
-			System.out.println("guardada en tvShow y userTvShow " );
-			return true;
-			
-		} else {
-			
-			UserTvShow userTvShowRecovered = getUserTvShowByTvShowId(userTvShow);
-			
-			if (userTvShowRecovered == null) {
+			if (tvShowRecovered == null) {
 				
-				userTvShowRepository.save(userTvShow);
+				tvShowsRepository.save(userTvShow.getTvShow());
+				userTvShowRepository.save(userTvShow);		
 				
-				System.out.println("guardada nueva en userTvShow " );			
+				System.out.println("tvShow saved on tvShows table and userTvShows table" );
 				
-				return true;	
+			} else {
+				
+				UserTvShow userTvShowRecovered = getUserTvShowByTvShowId(userTvShow);
+				
+				if (userTvShowRecovered == null) {
+					
+					userTvShowRepository.save(userTvShow);
+					
+					System.out.println("userTvShow save on userTvShows table" );	
+					
+				} 		
+			}
 			
-			} else {				
-				
-				return false;			
-				
-			}			
-		}
+		} catch (Exception e) {
+
+			log.error("Couldn't get the user userTvShows by watchedStatus " + e.getMessage());	
+			
+		}		
 	}
 
 	@Override
-	public boolean updateUserTvShow(@Valid UserTvShow userTvShow) {
+	public void updateUserTvShow(@Valid UserTvShow userTvShow) {
 
 		UserTvShow userTvShowRecovered = getUserTvShowByTvShowId(userTvShow);
 		
-		if (userTvShow.equals(userTvShowRecovered)) {
-				
-			System.out.println("no guardada " );
+		try {
 			
-			return false;	
+			if (userTvShow.equals(userTvShowRecovered)) {
 				
-		}	else {
+				System.out.println("userTvShow not saved because it is already saved in database");
 				
-			userTvShowRepository.save(userTvShow);
+			}	else {
+				
+				userTvShowRepository.save(userTvShow);
+				
+				System.out.println("usrTvShow updated" );
+			}
 			
-			System.out.println("actualizar " );
+		} catch (Exception e) {
 			
-			return true;
+			log.error("Couldn't update the userTvShow " + e.getMessage());	
 		}
+		
 	}	
 
 	private UserTvShow getUserTvShowByTvShowId(UserTvShow userTvShow) {
 		
-		List <UserTvShow> userTvShowListRecovered = userTvShowRepository.findByUser(userTvShow.getUser());
-		
-		UserTvShow userTvShowById = null;
-		for (UserTvShow userTvShowRecovered : userTvShowListRecovered) {
-			if (userTvShowRecovered.getTvShow().getId() == userTvShow.getTvShow().getId()) {
-				userTvShowById = userTvShowRecovered;
-			}			
+		try {
+			
+			List <UserTvShow> userTvShowListRecovered = userTvShowRepository.findByUser(userTvShow.getUser());
+			
+			UserTvShow userTvShowById = null;
+			for (UserTvShow userTvShowRecovered : userTvShowListRecovered) {
+				if (userTvShowRecovered.getTvShow().getId() == userTvShow.getTvShow().getId()) {
+					userTvShowById = userTvShowRecovered;
+				}			
+			}
+			
+			return userTvShowById;
+			
+		} catch (Exception e) {
+
+			log.error("Couldn't get userTvShowByTvShowId " + e.getMessage());
+			
+			return null;
+			
 		}
-		return userTvShowById;
+		
 	}
 
 	@Override
-	public boolean deleteTvShowUserById(@Valid long id) {
+	public void deleteTvShowUserById(@Valid long id) {
+		
 		try {
 			
 			userTvShowRepository.deleteById(id);
-			return true;
 			
 		} catch (Exception e) {
 			
-			System.out.print(e.getMessage());
-			return false;
+			log.error("Couldn't delete the userTvShow " + e.getMessage());	
+
 		}
 	}
 }
