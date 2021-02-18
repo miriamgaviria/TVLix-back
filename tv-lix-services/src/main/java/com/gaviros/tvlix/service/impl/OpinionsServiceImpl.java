@@ -30,9 +30,17 @@ public class OpinionsServiceImpl implements OpinionsService{
 
 	@Override
 	public List<Opinion> getAllOpinions()  {
-
-		return (List<Opinion>) opinionsRepository.findAll();	
 		
+		try {
+			
+			return (List<Opinion>) opinionsRepository.findAll();	
+			
+		} catch (Exception e) {
+			
+			log.error("Couldn't get the o: ", e.getMessage());
+			
+			return null;
+		}		
 	}
 
 	@Override
@@ -63,19 +71,28 @@ public class OpinionsServiceImpl implements OpinionsService{
 	// Method to probe
 	@Override
 	public void updateOpinion(@Valid Opinion opinion) {
-
-		Optional<Opinion> opinionRecovered = opinionsRepository.findById(opinion.getId());
 		
-		if(opinionRecovered.equals(opinion)) {
-
-			log.error ("No ha habido cambios");		
+		try {
 			
-		} else {
+			Optional<Opinion> opinionRecovered = opinionsRepository.findById(opinion.getId());
 			
-			opinionsRepository.save(opinion);
+			if(opinionRecovered.equals(opinion)) {
+				
+				log.error ("The opinion hasn't been updated");		
+				
+			} else {
+				
+				opinionsRepository.save(opinion);
+				
+				log.error ("Opinion updated");		
+			}
 			
-			log.error ("Opinión cambiada");		
+		} catch (Exception e) {
+			
+			log.error("Couldn't update the opinion " + e.getMessage());
+			
 		}
+
 		
 	}
 
