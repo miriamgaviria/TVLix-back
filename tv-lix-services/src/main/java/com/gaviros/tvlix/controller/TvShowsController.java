@@ -39,15 +39,15 @@ public class TvShowsController {
 	}
 	
 	@PostMapping
-	public boolean postTvShow(@RequestBody @Valid TvShow tvShow) {
+	public void postTvShow(@RequestBody @Valid TvShow tvShow) {
 		
-		return tvShowsService.saveTvShow(tvShow);
+		tvShowsService.saveTvShow(tvShow);
 	}
 	
 	@PutMapping
-	public boolean putTvShow(@RequestBody @Valid TvShow tvShow) {
+	public void putTvShow(@RequestBody @Valid TvShow tvShow) {
 		
-		return tvShowsService.updateTvShow(tvShow);
+		tvShowsService.updateTvShow(tvShow);
 	}
 	
 	@DeleteMapping("/{id}")

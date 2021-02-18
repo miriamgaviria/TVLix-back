@@ -12,9 +12,9 @@ public interface TvShowsService {
 	
 	public abstract TvShow getTvShowById(long id);
 
-	public abstract boolean saveTvShow(TvShow tvShow);
+	public abstract void saveTvShow(TvShow tvShow);
 	
-	public abstract boolean updateTvShow(TvShow tvShow);
+	public abstract void updateTvShow(TvShow tvShow);
 	
 	public abstract boolean deleteTvShowById(long id);
 
