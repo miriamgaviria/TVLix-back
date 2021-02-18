@@ -27,16 +27,19 @@ public class UsersController {
 	
 	@PostMapping ("/isUser")
 	public int checkIsUser (@RequestBody @Valid User user) {
+		
 		return usersService.checkIsUser(user);
 	}
 
 	@GetMapping("/userName/{userName}")
 	public User getUserByUsername(@PathVariable (required = true) @Valid String userName) {	
+		
 		return usersService.getUserByUsername(userName);
 	}
 	
 	@GetMapping("/{id}")
 	public User getUserById(@PathVariable (required = true) @Valid long id) {		
+		
 		return usersService.getUserById(id);
 	}
 	
@@ -53,9 +56,9 @@ public class UsersController {
 	}
 	
 	@DeleteMapping("/{id}")
-	public boolean deleteUserById(@PathVariable (required = true) @Valid long id) {		
-		return usersService.deleteUserById(id);
-	}
-	
+	public void deleteUserById(@PathVariable (required = true) @Valid long id) {	
+		
+		usersService.deleteUserById(id);
+	}	
 }
 

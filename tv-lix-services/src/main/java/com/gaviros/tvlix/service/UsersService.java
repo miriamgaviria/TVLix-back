@@ -14,6 +14,6 @@ public interface UsersService {
 	
 	public abstract boolean updateUser(User user); 
 	
-	public abstract boolean deleteUserById(long id);
+	public abstract void deleteUserById(long id);
 
 }
