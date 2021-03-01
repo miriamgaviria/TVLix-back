@@ -54,6 +54,9 @@ public class UserTvShow implements Serializable{
 	
 	@Column
 	private String opinion;
+	
+	@Column
+	private String date;
 		
 	@Column
 	private String seasonWatched;

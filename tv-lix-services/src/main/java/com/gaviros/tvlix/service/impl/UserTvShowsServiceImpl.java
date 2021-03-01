@@ -1,5 +1,7 @@
 package com.gaviros.tvlix.service.impl;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -87,6 +89,10 @@ public class UserTvShowsServiceImpl implements UserTvShowsService{
 	@Override
 	public void saveUserTvShow(@Valid UserTvShow userTvShow) {
 		
+		String userTvShowDateAsString = getCurrentDate();
+		
+		userTvShow.setDate(userTvShowDateAsString);	
+		
 		try {
 			
 			TvShow tvShowRecovered = tvShowsRepository.findById(userTvShow.getTvShow().getId());
@@ -120,6 +126,10 @@ public class UserTvShowsServiceImpl implements UserTvShowsService{
 
 	@Override
 	public void updateUserTvShow(@Valid UserTvShow userTvShow) {
+		
+		String userTvShowDateAsString = getCurrentDate();
+		
+		userTvShow.setDate(userTvShowDateAsString);	
 
 		UserTvShow userTvShowRecovered = getUserTvShowByTvShowId(userTvShow);
 		
@@ -142,6 +152,18 @@ public class UserTvShowsServiceImpl implements UserTvShowsService{
 		}
 		
 	}	
+	
+
+	private String getCurrentDate() {
+		
+		Date currentDate = new Date();
+		
+		String strDateFormat = "yyyy-MM-dd";
+		
+		SimpleDateFormat userTvShowDate = new SimpleDateFormat(strDateFormat);
+		
+		return userTvShowDate.format(currentDate);
+	}
 
 	private UserTvShow getUserTvShowByTvShowId(UserTvShow userTvShow) {
 		

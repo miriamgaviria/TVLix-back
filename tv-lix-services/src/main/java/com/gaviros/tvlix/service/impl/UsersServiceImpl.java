@@ -49,7 +49,9 @@ public class UsersServiceImpl implements UsersService{
 			
 		} catch (Exception e) {
 			
-			log.error("The user couldn't login " + e.getMessage());return 0;					
+			log.error("The user couldn't login " + e.getMessage());
+			
+			return 0;					
 		}		
 	}
 
