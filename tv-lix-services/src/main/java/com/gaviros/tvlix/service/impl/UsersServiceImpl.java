@@ -96,17 +96,18 @@ public class UsersServiceImpl implements UsersService{
 			
 			userRecovered = usersRepository.findByUserName(user.getUserName());
 			
-			if(userRecovered == null || userRecovered.getUserName().isEmpty()) {
-				
-				usersRepository.save(user);
-				
-				return true;
-				
-			} else {
+			if(userRecovered != null && userRecovered.getUserName().equals(user.getUserName())) {
 				
 				log.info ("user not saved because it is already saved in database");
 				
 				return false;
+				
+			} else {				
+				
+				usersRepository.save(user);
+				
+				return true;				
+
 			}
 			
 		} catch (Exception e) {
