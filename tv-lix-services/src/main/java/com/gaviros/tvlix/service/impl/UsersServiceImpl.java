@@ -35,7 +35,7 @@ public class UsersServiceImpl implements UsersService{
 				
 				if (user.getUserName().equals(userRecovered.getUserName()) && user.getPassword().equals(userRecovered.getPassword())) {
 					
-					log.info("ther user name and the password are corrected");
+					log.info("the user name and the password are corrected");
 
 					return 2;
 					

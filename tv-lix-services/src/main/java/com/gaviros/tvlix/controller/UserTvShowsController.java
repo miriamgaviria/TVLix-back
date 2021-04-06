@@ -52,7 +52,6 @@ public class UserTvShowsController {
 	
 	@PostMapping
 	public void postUserTvShow(@RequestBody @Valid UserTvShow userTvShow) {
-		
 		userTvShowsService.saveUserTvShow(userTvShow);
 	}
 	

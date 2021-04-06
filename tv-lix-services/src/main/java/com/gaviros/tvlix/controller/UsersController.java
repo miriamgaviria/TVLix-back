@@ -16,8 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.gaviros.tvlix.entity.User;
 import com.gaviros.tvlix.service.UsersService;
 
-@CrossOrigin(origins = "*", allowedHeaders="*")
-//@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins= {"http://localhost:4200"})
 @RestController
 @RequestMapping ("/users")
 public class UsersController {
