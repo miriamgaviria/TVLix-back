@@ -12,7 +12,6 @@ public interface OpinionsService {
 	
 	public abstract void saveOpinion (Opinion opinion);
 	
-	// Method to probe
 	public abstract void updateOpinion(@Valid Opinion opinion);
 
 	public abstract void deleteOpinion (long id);

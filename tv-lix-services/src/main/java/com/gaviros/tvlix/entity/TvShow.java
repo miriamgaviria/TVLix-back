@@ -25,14 +25,10 @@ import lombok.ToString;
 
 public class TvShow implements Serializable {
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@Column
-//	@OneToMany
 	private long id;	
 	
 	@Column
